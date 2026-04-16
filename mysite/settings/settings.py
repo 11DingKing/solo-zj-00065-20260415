@@ -22,12 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=#+sttn&auyxnqins-zvm@eql6s9z+riv*@5ipyw)5z1oszzvg'
+SECRET_KEY = os.environ.get('SECRET_KEY', '=#+sttn&auyxnqins-zvm@eql6s9z+riv*@5ipyw)5z1oszzvg')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
 PRODUCTION = False
 
@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'postgres',
-        'PORT': '5432',
+        'NAME': os.environ.get('POSTGRES_DB', 'postgres'),
+        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'postgres'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
 }
 
@@ -131,7 +131,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/static'
 
 # Celery config
-CELERY_BROKER_URL= 'pyamqp://rabbitmq:5672'
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', 'pyamqp://guest:guest@rabbitmq:5672')
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_BEAT_SCHEDULE = {
     'queue_every_five_mins': {
