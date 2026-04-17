@@ -94,7 +94,7 @@ services:
 
   flower:
     build: .
-    command: sh -c "wait-for rabbitmq:5672 -- flower -A mysite --port=5555 --url_prefix=/flower"
+    command: sh -c "wait-for rabbitmq:5672 -- flower -A mysite --port=5555"
     container_name: flower
     depends_on:
       - rabbitmq
