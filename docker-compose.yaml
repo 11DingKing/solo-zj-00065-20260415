@@ -46,7 +46,7 @@ services:
     restart: on-failure
     environment:
       - SECRET_KEY=${SECRET_KEY}
-      - DEBUG=${DEBUG:-False}
+      - DEBUG=${DEBUG:-True}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost}
       - DATABASE_URL=postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-postgres}
       - CELERY_BROKER_URL=pyamqp://${RABBITMQ_USER:-guest}:${RABBITMQ_PASSWORD:-guest}@rabbitmq:5672
@@ -67,7 +67,7 @@ services:
     restart: on-failure
     environment:
       - SECRET_KEY=${SECRET_KEY}
-      - DEBUG=${DEBUG:-False}
+      - DEBUG=${DEBUG:-True}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost}
       - DATABASE_URL=postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-postgres}
       - CELERY_BROKER_URL=pyamqp://${RABBITMQ_USER:-guest}:${RABBITMQ_PASSWORD:-guest}@rabbitmq:5672
@@ -87,7 +87,7 @@ services:
     restart: on-failure
     environment:
       - SECRET_KEY=${SECRET_KEY}
-      - DEBUG=${DEBUG:-False}
+      - DEBUG=${DEBUG:-True}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost}
       - DATABASE_URL=postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-postgres}
       - CELERY_BROKER_URL=pyamqp://${RABBITMQ_USER:-guest}:${RABBITMQ_PASSWORD:-guest}@rabbitmq:5672
@@ -108,7 +108,7 @@ services:
     restart: on-failure
     environment:
       - SECRET_KEY=${SECRET_KEY}
-      - DEBUG=${DEBUG:-False}
+      - DEBUG=${DEBUG:-True}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost}
       - DATABASE_URL=postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-postgres}
       - CELERY_BROKER_URL=pyamqp://${RABBITMQ_USER:-guest}:${RABBITMQ_PASSWORD:-guest}@rabbitmq:5672
